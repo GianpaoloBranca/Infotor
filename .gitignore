@@ -1,1 +1,4 @@
-infomontenv/
+infomont_env/
+.vscode/
+*.pyc
+infomont_project/db.sqlite3
