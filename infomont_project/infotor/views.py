@@ -2,14 +2,17 @@
 from __future__ import unicode_literals
 
 from django.shortcuts import render
-from django.core import serializers
 from infotor.models import Torrente
+from django.core import serializers
 
-# Create your views here.
 def index(request):
-    data = serializers.serialize("python", Torrente.objects.all())
+    # tira fuori un dizionario con tutti i campi per il torrente
+    field_names = Torrente._meta.get_fields()
+    torrent = Torrente.objects.get(Trtname='Torrente esempio')
+
     context_dict = {
-        'data':data
+        'fields': field_names,
+        'torrent': torrent
     }
 
-    return render(request, 'infotor/base.html', context_dict)
+    return render(request, 'infotor/home.html', context_dict)
