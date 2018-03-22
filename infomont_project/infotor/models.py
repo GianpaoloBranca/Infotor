@@ -4,6 +4,13 @@ from __future__ import unicode_literals
 from django.db import models
 
 class Torrente(models.Model):
+
+    class Meta:
+        verbose_name_plural = 'Torrenti'
+
+    def __str__(self):
+        return self.Trtname
+
     IDtrat = models.IntegerField(primary_key=True)
 
     # nome della forra com'è conosciuta dai torrentisti
@@ -34,6 +41,13 @@ class Torrente(models.Model):
 
 
 class Percorso(models.Model):
+
+    class Meta:
+        verbose_name_plural = 'Percorsi'
+
+    def __str__(self):
+        return self.Nume
+
     IDperc = models.IntegerField(primary_key=True)
 
     Nume = models.CharField(max_length=6) # numero / sigla percorso

@@ -7,12 +7,24 @@
       <li class="nav-item">
         <a class="nav-link text-light h4" href="#">Mappa</a>
       </li>
+      {% if torrents %}
+        {% for t_name, t_slug in torrents %}
+          <li>
+              <a href="/infotor/{{ t_slug }}">{{ t_name }}</a>
+          </li>
+        {% endfor %}
+      {% else %}
+      <li>
+          <b>Non sono stati trovati torrenti nel Database</b>
+      </li>
+      {% endif %}
     </ul>
 </nav>
 {% endblock %}
 
 {% block main %}
 <main class="col-sm-9 offset-sm-3 col-md-10 offset-md-2 pt-3">
+    {% if data %}
     <h1>Nome torrente<button class="btn btn-primary mx-3 mb-1">Modifica</button></h1>
     <canvas id="my-canvas" width="801" height="401"></canvas>
     <details>
@@ -31,5 +43,8 @@
         </tbody>
         </table>
     </details>
+    {% else %}
+    <h1>Seleziona un Torrente da visualizzare</h1>
+    {% endif %}
 </main>
 {% endblock %}
