@@ -8,9 +8,9 @@
         <a class="nav-link text-light h4" href="#">Mappa</a>
       </li>
       {% if torrents %}
-        {% for t_name, t_slug in torrents %}
+        {% for torrent in torrents %}
           <li>
-              <a href="/infotor/{{ t_slug }}">{{ t_name }}</a>
+              <a href="/infotor/{{ torrent.0 }}">{{ torrent.1 }}</a>
           </li>
         {% endfor %}
       {% else %}
@@ -25,7 +25,7 @@
 {% block main %}
 <main class="col-sm-9 offset-sm-3 col-md-10 offset-md-2 pt-3">
     {% if data %}
-    <h1>Nome torrente<button class="btn btn-primary mx-3 mb-1">Modifica</button></h1>
+    <h1>{{ data.Trtname }}<button class="btn btn-primary mx-3 mb-1">Modifica</button></h1>
     <canvas id="my-canvas" width="801" height="401"></canvas>
     <details>
         <summary class="h3">
@@ -33,13 +33,15 @@
         </summary>
         <table class="table table-striped table-sm">
         <tbody>
+            {% for key, item in data_dict.items %}
             <tr>
-                <td>Nome</td>
-                <td>Descrizione</td>
+                <td>{{key}}</td>
+                <td>{{item}}</td>
                 <td>
                     <a class="float-right"><img src="{% static 'pencil-3x.png' %}"></a>
                 </td>
             </tr>
+            {% endfor %}
         </tbody>
         </table>
     </details>

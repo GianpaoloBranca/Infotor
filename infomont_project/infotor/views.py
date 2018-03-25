@@ -3,13 +3,11 @@ from __future__ import unicode_literals
 
 from django.shortcuts import render
 from django.template.defaultfilters import slugify
+from django.forms.models import model_to_dict
 from infotor.models import Torrente
 
 def index(request):
-    torrents_names = Torrente.objects.values_list('Trtname', flat=True).order_by('Trtname')
-    torrents_slugs = slugify_all(torrents_names)
-
-    torrents = zip(torrents_names, torrents_slugs)
+    torrents = Torrente.objects.values_list('IDtrat','Trtname').order_by('Trtname')
 
     context_dict = {
         'torrents': torrents
@@ -17,17 +15,21 @@ def index(request):
     # la pagina index non è altro che quella per i torrenti ma senza dati visualizzati
     return render(request, 'infotor/torrenti.html', context_dict)
 
-def show_torrent(request, torrent_name):
+def show_torrent(request, torrent_id):
+    torrents = Torrente.objects.values_list('IDtrat','Trtname').order_by('Trtname')
     # TODO tipo tutto ancora
-    data = Torrente.objects.get(Trtname=torrent_name)
+    data = Torrente.objects.get(IDtrat=torrent_id)
+    data_dict = model_to_dict(data)
 
     context_dict = {
-        'data': data
+        'torrents': torrents,
+        'data': data,
+        'data_dict': data_dict
     }
 
     return render(request, 'infotor/torrenti.html', context_dict)
 
-# helper function
+# helper function (not used atm)
 def slugify_all(names):
 
     slugs = []
