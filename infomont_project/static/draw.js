@@ -5,12 +5,14 @@ function draw() {
   /* lines are 2 pixels wide, so x = 0.5 = 1 pixel,
   * because the line is in the middle of the pixel.
   */
-  for(var x=0.5; x<=801; x+=10) {
+  for(var x=0.5; x<=801; x+=10)
+  {
     context.moveTo(x, 0);
     context.lineTo(x, 600);
   }
 
-  for(var y=0.5; y<=401; y+=10) {
+  for(var y=0.5; y<=401; y+=10)
+  {
     context.moveTo(0, y);
     context.lineTo(800, y);
   }
@@ -18,21 +20,27 @@ function draw() {
   context.strokeStyle = "#eee";
   context.stroke();
 
-  // Draw a circle
+  var dislivello = [10, 80, 20, 100, 10];
+  var lunghezze = [50, 100, 80, 120, 50];
 
-  var segments = 64, radius = 100;
-  var cx = 400, cy = 200;
-
-  context.moveTo(cx + radius, cy + radius);
-
+  var dislivelloCorrente = 20;
+  var lunghezzaCorrente = 20;
   context.beginPath();
-
-  for(var i=0; i<=segments; i++) {
-    var alpha = (i/segments) * 2 * Math.PI;
-    context.lineTo(cx + radius * Math.cos(alpha), cy + radius * Math.sin(alpha));
+  context.moveTo(lunghezzaCorrente, dislivelloCorrente);
+  for(var x=0; x<lunghezze.length; x++)
+  {
+    dislivelloCorrente = dislivelloCorrente + dislivello[x];
+    lunghezzaCorrente = lunghezzaCorrente + lunghezze[x];
+    context.lineTo(lunghezzaCorrente, dislivelloCorrente);
+    context.moveTo(lunghezzaCorrente, dislivelloCorrente);
+    console.log(lunghezzaCorrente, dislivelloCorrente);
   }
-
-  context.lineWidth=1;
-  context.strokeStyle = "#000";
+  context.lineWidth = 2;
+  context.strokeStyle = "purple";
   context.stroke();
+  context.strokeStyle = "black";
+  context.lineWidth = 1;
+  context.font ="14px Arial";
+  context.strokeText("Inizio", 20, 20);
+  context.strokeText("Fine", lunghezzaCorrente, dislivelloCorrente);
 }

@@ -9,8 +9,8 @@
       </li>
       {% if torrents %}
         {% for torrent in torrents %}
-          <li>
-              <a href="/infotor/{{ torrent.0 }}">{{ torrent.1 }}</a>
+          <li class="nav-item">
+              <a class="nav-link text-light"href="/infotor/{{ torrent.0 }}">{{ torrent.1 }}</a>
           </li>
         {% endfor %}
       {% else %}
@@ -31,15 +31,12 @@
         <summary class="h3">
             Dettagli
         </summary>
-        <table class="table table-striped table-sm">
+        <table class="table table-striped table-sm my-table">
         <tbody>
             {% for key, item in data_dict.items %}
             <tr>
                 <td>{{key}}</td>
-                <td>{{item}}</td>
-                <td>
-                    <a class="float-right"><img src="{% static 'pencil-3x.png' %}"></a>
-                </td>
+                <td><div data-editable>{{item}}</div></td>
             </tr>
             {% endfor %}
         </tbody>
