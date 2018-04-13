@@ -1,19 +1,32 @@
+ // TODO refactor. This should not be attached to the body
+
 $('body').on('dblclick', '[data-editable]', function(){
   var $el = $(this);
 
-  var $input = $('<input class="form-control" />').val( $el.text());
-  $el.replaceWith( $input );
+  var $text = $el.find('div');
+  var $input = $el.find('input');
+
+  $input.val( $text.text());
+
+  $text.hide();
+  $input.show();
+
+  //var $input = $('<input class="form-control"/>').val( $el.text());
+  //$el.replaceWith( $input );
 
   var save = function(){
-    var $p =  $('<div data-editable/>').text($input.val());
-    $input.replaceWith( $p );
+    //var $p =  $('<div data-editable/>').text($input.val());
+    //$input.replaceWith( $p );
+    $text = $text.text($input.val())
+    $text.show();
+    $input.hide();
   };
 
   var reset = function(){
-    $input.replaceWith( $el );
+    //$input.replaceWith( $el );
+    $text.show();
+    $input.hide();
   }
-
-  var enterEvent = new Event('enter');
 
   /**
     We're defining the callback with `one`, because we know that

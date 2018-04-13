@@ -27,6 +27,7 @@
     {% if data %}
     <h1>{{ data.Trtname }}</h1>
     <canvas id="my-canvas" width="801" height="401"></canvas>
+    <!-- BEGIN Tabella dati -->
     <details>
         <summary class="h3">
             Dettagli
@@ -38,12 +39,17 @@
             {% for key, item in data_dict.items %}
             <tr>
                 <td>{{key}}</td>
-                <td><div data-editable>{{item}}</div></td>
+                <!-- queso div in qualche modo è dipendente dall'identazione -->
+                <td data-editable>
+                    <div>{{ item.0 }}</div>
+                    <input class="form-control" type="text" style="display:none" maxlength="{{ item.1 }}"/>
+                </td>
             </tr>
             {% endfor %}
         </tbody>
         </table>
     </details>
+    <!-- END Tabella dati-->
     {% else %}
     <h1>Seleziona un Torrente da visualizzare</h1>
     {% endif %}

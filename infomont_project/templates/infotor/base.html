@@ -14,6 +14,7 @@
     </title>
   </head>
   <body onload="draw();">
+    <!-- BEGIN Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-dark">
       <a class="navbar-brand" href="#">
         <img src="http://www.caimilano.org/wp-content/uploads/2016/06/logo_header.png" height="40" alt="">
@@ -21,7 +22,7 @@
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-
+      <!-- BEGIN Navbar sections and links -->
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
@@ -51,10 +52,12 @@
           <a class="nav-link h5" href="#">Sezione 3</a>
         </li>
         </ul>
+
         <a class="text-light h5" href="#">Esci</a>
       </div>
+      <!-- END Navbar sections and links -->
     </nav>
-
+    <!-- END Navbar -->
     {% block sidebar %}
     {% endblock %}
 
