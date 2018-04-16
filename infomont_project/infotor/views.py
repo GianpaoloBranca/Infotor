@@ -2,7 +2,6 @@
 from __future__ import unicode_literals
 
 from django.shortcuts import render
-from django.template.defaultfilters import slugify
 from django.forms.models import model_to_dict
 from infotor.models import Torrente
 
