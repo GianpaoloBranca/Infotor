@@ -1,5 +1,6 @@
 {% extends 'infotor/base.html' %}
 {% load staticfiles %}
+{% load infotor_template_tags %}
 
 {% block sidebar %}
 <nav class="col-sm-3 col-md-2 hidden-xs-down bg-faded sidebar bg-secondary">
@@ -24,8 +25,8 @@
 
 {% block main %}
 <main class="col-sm-9 offset-sm-3 col-md-10 offset-md-2 pt-3">
-    {% if data %}
-    <h1>{{ data.Trtname }}</h1>
+    {% if torrente %}
+    <h1>{{ torrente.Trtname }}</h1>
     <canvas id="my-canvas" width="801" height="401"></canvas>
     <!-- BEGIN Tabella dati -->
     <details>
@@ -38,11 +39,10 @@
         <tbody>
             {% for key, item in data_dict.items %}
             <tr>
-                <td>{{key}}</td>
-                <!-- queso div in qualche modo è dipendente dall'identazione -->
+                <td>{% verbose_name torrente key %}</td>
                 <td data-editable>
-                    <div>{{ item.0 }}</div>
-                    <input class="form-control" type="text" style="display:none" maxlength="{{ item.1 }}"/>
+                    <div>{{ item }}</div>
+                    <input class="form-control" type="text" style="display:none"/>
                 </td>
             </tr>
             {% endfor %}

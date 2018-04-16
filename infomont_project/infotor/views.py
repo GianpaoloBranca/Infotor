@@ -20,14 +20,14 @@ def show_torrent(request, torrent_id):
     data_dict = model_to_dict(data)
 
     max_length = get_max_fields_length(Torrente)
-    data_with_length = add_max_length_to_items(max_length, data_dict)
+    #data_with_length = add_max_length_to_items(max_length, data_dict)
     # non voglio che la chiave primaria venga mandata alla pagina
-    del data_with_length['IDtrat']
+    #del data_with_length['IDtrat']
 
     context_dict = {
         'torrents': torrents,
-        'data': data,
-        'data_dict': data_with_length,
+        'torrente': data,
+        'data_dict': data_dict,
         'field_max_length': max_length
     }
 
