@@ -42,7 +42,8 @@
                 <td>{% verbose_name torrente key %}</td>
                 <td data-editable>
                     <div>{{ item }}</div>
-                    <input class="form-control" type="text" style="display:none"/>
+                    <input class="form-control" type="text" style="display:none"
+                        maxlength="{% max_length torrente key %}"/>
                 </td>
             </tr>
             {% endfor %}
