@@ -1,0 +1,19 @@
+{% if type == 'CharField' %}
+    {% if choices %}
+    <select>
+        {% for choice in choices %}
+            {% if choice == value %}
+                <option selected>{{ choice.1 }}</option>
+            {% else %}
+                <option>{{ choice.1 }}</option>
+            {% endif %}
+        {% endfor %}
+    </select>
+    {% else %}
+    <input class="form-control" type="text" maxlength="{{ max_length }}"/>
+    {% endif %}
+{% elif type == 'IntegerField' %}
+<input class="form-control" type="number"/>
+{% elif type == 'DateField' %}
+<input class="form-control" type="date" />
+{% endif %}

@@ -4,26 +4,20 @@ $('body').on('dblclick', '[data-editable]', function(){
   var $el = $(this);
 
   var $text = $el.find('div');
-  var $input = $el.find('input');
-
-  $input.val( $text.text());
+  var $input = $el.find('edit-tag');
+  var $inner = $input.children().first()
+  $inner.val( $text.text());
 
   $text.hide();
   $input.show();
 
-  //var $input = $('<input class="form-control"/>').val( $el.text());
-  //$el.replaceWith( $input );
-
   var save = function(){
-    //var $p =  $('<div data-editable/>').text($input.val());
-    //$input.replaceWith( $p );
-    $text = $text.text($input.val())
+    $text = $text.text($inner.val())
     $text.show();
     $input.hide();
   };
 
   var reset = function(){
-    //$input.replaceWith( $el );
     $text.show();
     $input.hide();
   }
@@ -35,7 +29,7 @@ $('body').on('dblclick', '[data-editable]', function(){
     Next time `p` turns into `input` this single callback
     will be applied again.
   */
-  $input.one('blur', reset).focus();
+  $inner.one('blur', reset).focus();
 
   $input.keyup(function(event) {
     if (event.keyCode === 13) { // enter key

@@ -21,7 +21,9 @@ class Torrente(models.Model):
     Comune = models.CharField('Comune', max_length=6)
     Grumon = models.CharField('Gruppo montuoso', max_length=11)
     Sezion = models.CharField('Sezione', max_length=7) # sezione
-    Nuovo = models.CharField('Nuovo tracciato?', max_length=2) # nuovo tracciato SI/NO
+
+    NUOVO_CHOICES = (('SI', 'Sì'), ('NO', 'No'))
+    Nuovo = models.CharField('Nuovo tracciato?', max_length=2, choices=NUOVO_CHOICES)
 
     Tipologia = models.CharField('Tipologia', max_length=2) # codice tipologia
     Caratter = models.CharField('Caratteristica', max_length=2) # codice caratteristica
